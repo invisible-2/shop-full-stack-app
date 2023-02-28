@@ -36,7 +36,7 @@ public class ProductsFrame extends JFrame {
         addProductBtn = new JButton("Add Product");
         updateProductBtn = new JButton("Update Product");
         deleteProductBtn = new JButton("Delete Product");
-        sortBtn = new JButton("Sort Asc");
+        sortBtn = new JButton("Sort By Price Asc");
 
         addProductBtn.setBackground(new Color(0, 179, 0));
         addProductBtn.setForeground(Color.WHITE);
@@ -67,7 +67,7 @@ public class ProductsFrame extends JFrame {
 
         getContentPane().add(panel);
         pack();
-        setSize(600, 500);
+        setSize(650, 500);
         setResizable(false);
     }
 
@@ -131,15 +131,15 @@ public class ProductsFrame extends JFrame {
             ProductFilter productFilter = new ProductFilter(productService);
 
             try {
-                if (sortBtn.getText().equals("Sort Asc")) {
+                if (sortBtn.getText().equals("Sort By Price Asc")) {
                     model.setRowCount(0);
                     productFilter.sortByPrice(true).forEach(productTable::addRow);
-                    sortBtn.setText("Sort Desc");
+                    sortBtn.setText("Sort By Price Desc");
 
-                } else if (sortBtn.getText().equals("Sort Desc")) {
+                } else if (sortBtn.getText().equals("Sort By Price Desc")) {
                     model.setRowCount(0);
                     productFilter.sortByPrice(false).forEach(productTable::addRow);
-                    sortBtn.setText("Sort Asc");
+                    sortBtn.setText("Sort By Price Asc");
                 }
 
                 table.revalidate();

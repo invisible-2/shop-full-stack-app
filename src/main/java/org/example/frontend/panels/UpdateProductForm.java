@@ -114,11 +114,9 @@ public class UpdateProductForm extends JFrame {
                 int res = JOptionPane.showConfirmDialog(this, "You want to save update ? ", "", JOptionPane.YES_NO_OPTION);
 
                 if (res == JOptionPane.YES_OPTION){
-                    if (productService.findByNameAndPrice(name, price).isEmpty()) {
                         productService.update(product);
                         repaintTable();
                         dispose();
-                    }  else JOptionPane.showMessageDialog(this, "This product already exists.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             } catch (NumberFormatException ex) {
